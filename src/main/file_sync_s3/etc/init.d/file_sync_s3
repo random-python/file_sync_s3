@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+
+#
+# https://github.com/random-python/file_sync_s3
+# https://github.com/OpenRC/openrc/blob/master/service-script-guide.md
+#
+
+depend() {
+	need net
+}
+
+supervisor=supervise-daemon
+
+command="/usr/bin/file_sync_s3_service"
+command_args=""
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+
+output_log="/var/log/${RC_SVCNAME}.std.log"
+error_log="/var/log/${RC_SVCNAME}.err.log"
